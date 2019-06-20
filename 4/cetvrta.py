@@ -1,8 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+def plot(x,y,stepen=1,n=0):
+    x0 = [0] * n + list(x)
+    y0 = [0] * n + list(y) 
+    p0 = np.poly1d(np.polyfit(x0,y0,stepen))
+    xp = np.linspace(x[0], x[-1], 10000)
+    yp = p0(xp)
+    plt.plot(x,y,'o',xp,yp)
+    plt.show()
+    return
+    
+a = lambda x : np.asarray(x)
 
-pw = [-250, 0, 100, 300, 500, 700, 850]
+pw = [250, 0, 100, 300, 500, 700, 850]
 u = [240] * 7
 i = [10] * 4 + [10.5] * 3
 N = [2] * 7
@@ -15,8 +26,5 @@ n = [1501, 1502, 1502, 1502, 1503, 1504, 1504]
 cosfi = [0.06, 0, 0.02, 0.07, 0.11, 0.16, 0.19]
 m = [3.55, 1.96, 2.6, 3.87, 5.2, 6.48, 7.43]
 
-def plot(x=pw,y):
-    plt.plot(x,y)
-    plt.show()
 
 
